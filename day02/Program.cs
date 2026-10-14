@@ -11,31 +11,22 @@ string again = Console.ReadLine()??"N";
 if(again == "y" || again == "Y")
 {
     Console.WriteLine("输入起始数字，例如数字1");
-    while(!int.TryParse(Console.ReadLine(),out start))
-    {
-        Console.WriteLine("输入不符合要求，请重新输入数字");
-    }
+    start = Writ_Num();
     Console.WriteLine("输入结束数字，例如数字100");
-    while(!int.TryParse(Console.ReadLine(),out end))
-    {
-        Console.WriteLine("输入不符合要求，请重新输入数字");
-    }
+    end = Writ_Num();
     end += 1;
 }
 Console.WriteLine($"猜下 在{start}~{end-1} 中猜一个数：");
 secret = Random.Shared.Next(start,end);
 while(true)
 {
-    while(!int.TryParse(Console.ReadLine(),out answer))
-    {
-        Console.WriteLine("输入不符合要求，请重新输入数字");
-    }
-    count++;
-    if(count > retrytimes)
+    answer = Writ_Num();
+    if(count >= retrytimes)
     {
         Console.WriteLine($"超过{retrytimes}次,答案是{secret}");
         break;
     }
+    count++;
     if(answer == secret)
     {
         Console.WriteLine("猜中啦，恭喜你~");
@@ -50,15 +41,9 @@ while(true)
             if(again == "y" || again == "Y")
             {
                 Console.WriteLine("输入起始数字，例如数字1");
-                while(!int.TryParse(Console.ReadLine(),out start))
-                {
-                    Console.WriteLine("输入不符合要求，请重新输入数字");
-                }
+                start = Writ_Num();
                 Console.WriteLine("输入结束数字，例如数字100");
-                while(!int.TryParse(Console.ReadLine(),out end))
-                {
-                    Console.WriteLine("输入不符合要求，请重新输入数字");
-                }
+                end = Writ_Num();
                 end += 1;
             }
             Console.WriteLine($"猜下 在{start}~{end-1} 中猜一个数：");
@@ -87,3 +72,13 @@ while(true)
 }
 
 Console.WriteLine($"一共猜了{count}次~");
+
+int Writ_Num()
+{
+    int num;
+    while(!int.TryParse(Console.ReadLine(),out num))
+    {
+        Console.WriteLine("输入不符合要求，请重新输入数字");
+    }
+    return num;
+}
