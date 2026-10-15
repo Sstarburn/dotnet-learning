@@ -11,16 +11,16 @@ string again = Console.ReadLine()??"N";
 if(again == "y" || again == "Y")
 {
     Console.WriteLine("输入起始数字，例如数字1");
-    start = Writ_Num();
+    start = 工具箱.读整数();
     Console.WriteLine("输入结束数字，例如数字100");
-    end = Writ_Num();
+    end = 工具箱.读整数();
     end += 1;
 }
 Console.WriteLine($"猜下 在{start}~{end-1} 中猜一个数：");
 secret = Random.Shared.Next(start,end);
 while(true)
 {
-    answer = Writ_Num();
+    answer = 工具箱.读整数();
     if(count >= retrytimes)
     {
         Console.WriteLine($"超过{retrytimes}次,答案是{secret}");
@@ -41,9 +41,9 @@ while(true)
             if(again == "y" || again == "Y")
             {
                 Console.WriteLine("输入起始数字，例如数字1");
-                start = Writ_Num();
+                start = 工具箱.读整数();
                 Console.WriteLine("输入结束数字，例如数字100");
-                end = Writ_Num();
+                end = 工具箱.读整数();
                 end += 1;
             }
             Console.WriteLine($"猜下 在{start}~{end-1} 中猜一个数：");
@@ -73,12 +73,3 @@ while(true)
 
 Console.WriteLine($"一共猜了{count}次~");
 
-int Writ_Num()
-{
-    int num;
-    while(!int.TryParse(Console.ReadLine(),out num))
-    {
-        Console.WriteLine("输入不符合要求，请重新输入数字");
-    }
-    return num;
-}
