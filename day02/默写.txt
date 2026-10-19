@@ -1,0 +1,17 @@
+public int 读整数()
+{   
+    int num ;
+    while(!int.TryParse(Console.ReadLine(),out num))
+    {
+        Console.WriteLine("请重新输入");
+    }
+    
+}
+
+
+public void main()
+{
+    
+    //进入选择是否输入修改起始范围
+    //进入猜数字游戏界面
+}
